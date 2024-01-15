@@ -9,9 +9,7 @@ import { Provider } from "react-redux";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <GlobalContextProvider>
-    <Provider store={store}>
     <App />
-    </Provider>
     <ToastContainer position="top-center" limit={2} />
   </GlobalContextProvider>
 );

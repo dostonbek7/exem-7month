@@ -1,13 +1,10 @@
 import useSignup from "../hooks/useSignup";
 import { useRef } from "react";
 import Loader from "../components/Loader";
-// icons
-import { FcGoogle } from "react-icons/fc";
-import { useLogin } from "../hooks/useLogin";
 
 function Signup() {
   const { isPending, signup } = useSignup();
-  const { enterWithGoogle } = useLogin();
+  
   const form = useRef();
   const displayName = useRef();
   const email = useRef();
@@ -24,10 +21,6 @@ function Signup() {
     form.current.reset();
   };
 
-  const handleWithGoogle = (e) => {
-    e.preventDefault();
-    enterWithGoogle();
-  };
   return (
     <>
       <div className="h-screen relative">
@@ -66,12 +59,7 @@ function Signup() {
               <button className="flex items-center justify-center btn bg-emerald-700 text-white py-2 px-3 rounded-md text-lg">
                 {isPending ? <Loader /> : "Signup"}
               </button>
-              <button
-                onClick={handleWithGoogle}
-                className="flex items-center gap-2 justify-center btn bg-emerald-900 py-2 px-3 rounded-md text-lg text-white"
-              >
-                <FcGoogle className="text-2xl" /> Enter with Google
-              </button>
+
               <p className="text-center text-base">
                 Already have an account?{" "}
                 <a className="text-lime-700" href="/login">

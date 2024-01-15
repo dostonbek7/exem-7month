@@ -19,6 +19,14 @@ const cartSlice = createSlice({
     addItem: (state,action)=>{
       const {product} = action.payload
       const item = state.cartItems.find((i)=>i.cardID === product.cartID)
+      if(item){
+        item.amount +=product.amount
+      }else{
+        state.cartItems.push(product)
+      }
+      state.numItemsInCart += product.amount;
+      state.cartTotal += product.price * product.amount;
+      cartSlice.caseReducers.calculate
     }
   }
 })

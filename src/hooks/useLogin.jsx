@@ -31,28 +31,9 @@ function useLogin() {
         setIsPending(false);
       });
   };
-  const enterWithGoogle = () => {
-    setIsPending(true)
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        dispatch({ type: "LOGIN", payload: user });
-        setIsPending(false);
-        setError(null);
-        toast.success("Well come back");
-        setIsPending(false)
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        const email = error.customData.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        setError(errorMessage);
-        setIsPending(false)
-      });
-  };
 
-  return { login, error, isPending, enterWithGoogle };
+
+  return { login, error, isPending };
 }
 
 export { useLogin };

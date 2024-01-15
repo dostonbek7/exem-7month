@@ -50,17 +50,20 @@ function Product() {
                       <button
                         key={color}
                         className="badge w-6 h-6 mr-2 border-2 border-primary"
-                      >
-
-                      </button>
+                      ></button>
                     );
                   })}
                 </div>
                 <div className="form-control w-full max-w-xs">
                   <label className="label" htmlFor="amount">
-                    <h4 className="text-md font-medium -tracking-wider capitalize">Amount</h4>
+                    <h4 className="text-md font-medium -tracking-wider capitalize">
+                      Amount
+                    </h4>
                   </label>
-                  <select className="select select-primary select-bordered select-md" id="amount"></select>
+                  <select
+                    className="select select-primary select-bordered select-md"
+                    id="amount"
+                  ></select>
                 </div>
                 <div className="mt-10">
                   <button className="btn btn-primary btn-md">Add to bag</button>
