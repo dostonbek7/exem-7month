@@ -3,8 +3,31 @@ import { BsCart3 } from "react-icons/bs";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import useLogout from "../hooks/useLogout";
 import { MdLogout } from "react-icons/md";
+import { useEffect, useState } from "react";
+
 
 function Navbar() {
+
+  function getThemeFromLocalStorage(){
+    return localStorage.getItem('theme') || 'light'
+  }
+  const [theme, setTheme]=  useState(getThemeFromLocalStorage)
+
+  useEffect(()=>{
+    localStorage.setItem('theme', theme);
+    const localtheme = localStorage.getItem('theme')
+    document.querySelector('html').setAttribute('data-theme', localtheme)
+  }, [theme])
+
+  const handleChange = (e)=>{
+    if(e.target.checked){
+      setTheme('light')
+    }
+    else(
+      setTheme('dark')
+    )
+  }
+
   const { user } = useGlobalContext();
   const { logout, isPending } = useLogout();
   return (
@@ -87,6 +110,8 @@ function Navbar() {
                 type="checkbox"
                 className="theme-controller"
                 value="synthwave"
+                onChange={handleChange}
+                checked={theme === 'dark' ? false : true}
               />
 
               {/* sun icon */}
